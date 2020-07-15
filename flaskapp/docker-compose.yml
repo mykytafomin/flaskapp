@@ -1,0 +1,13 @@
+version: '2'
+services:
+  flask:
+    build: .
+    command: gunicorn -b 0.0.0.0:5000 project:app --reload
+    environment: 
+      - FLASK_APP=project.py
+      - FLASK_DEBUG=1
+      - PYTHONUNBUFFERED=True
+    ports: 
+      - "5000:5000"
+    volumes: 
+      - ./:/root

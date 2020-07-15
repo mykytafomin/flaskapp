@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block content %}
+<title>Datasets</title>
+{% if datasets|length > 0 %}
+    <div class="table-responsive">    
+        <table class="table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Filename</th>
+                    <th scope="col">Route to folder</th>
+                    <th scope="col">Number of lines</th>
+                    <th scope="col">Number of columns</th>
+                    <th scope="col">Delimiter</th>
+                    <th scope="col">Column names</th>
+                    <th scope="col">Column types</th>
+                    <th scope="col">File with columns description</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for file in datasets %}
+                    <tr>
+                        <th scope="row">{{file.id}}</th>
+                        <td><a href="details/{{file.filename}}.html">{{file.filename}}</a></td>
+                        <td>{{file.directory}}</td>
+                        <td>{{file.number_of_lines}}</td>
+                        <td>{{file.number_of_columns}}</td>
+                        <td>{{file.columns_separator}}</td>
+                        <td>{{file.columns_name}}</td>
+                        <td>{{file.columns_type}}</td>
+                        <td>{{file.columns_description_filename}}</td>
+                        <td><a href="/datasets/delete/{{file.id}}"><b>Delete</b></a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% else %}
+    <h1>No datasets available</h1>
+    <a class="nav-item nav-link" href="{{ url_for('add_dataset') }}">Click to add your dataset</a>
+{% endif %}
+
+{% endblock %}

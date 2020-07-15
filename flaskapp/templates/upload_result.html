@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+<title>Result</title>
+{% if dataset %}
+    <p>
+        {{info}}
+        <br/>
+        Upload file: <b>{{dataset.filename}}</b>
+        <br/>
+        Folder: {{dataset.directory}}
+    </p>
+{% else %}
+    <p>
+        There was an error while uploading the file to a web-server
+        <br/>
+        {{info}}
+    </p>
+{% endif %}
+{% endblock %}

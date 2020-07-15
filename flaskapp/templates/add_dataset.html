@@ -1,0 +1,35 @@
+<!doctype html>
+{% extends "base.html" %}
+{% block content %}
+<div class="jumbotron">
+  <title>Upload files</title>
+
+  
+  <form action="upload_result"
+        method="post"
+        enctype="multipart/form-data">
+  
+    <div class="form-group">
+      <div>
+          <label for="yourfile">Delimiter</label>
+          <input type="text" name="col_sep" placeholder='input delimiter' value=';'>
+      </div>
+      <div>
+          <label for="header">Add headers</label>
+          <input type="checkbox" id="checkbox" name="checkbox" onmousedown="this.form.colnames.disabled=this.checked"/>
+          <input type="text" id="colnames" name="colnames" placeholder="Columns name (using semicolons)" disabled />
+      </div>
+      <div>
+
+        <label for="header">Add data types (bool; int; float; category; object; date;)</label>
+        <input type="text" id="coltypes" name="coltypes" placeholder="Data types (using semicolons)" />
+      </div>
+      <div>
+        <label for="yourfile"></label>
+        <input type="file" name="yourfile">
+      </div>
+    </div>
+  
+    <button type="submit">Upload</button>
+  </form>
+{% endblock %}

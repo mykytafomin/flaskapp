@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<title>Deleting</title>
+
+{% if dataset %}
+<p>
+    Deleted file:
+    <br/>
+    <b>{{ dataset.filename }}</b>
+    <br/>
+    <a class="nav-item nav-link" href="{{ url_for('list_datasets') }}">Back to datasets</a>
+</p>
+{% else %}
+<p>
+    File has not been deleted
+    <br/>
+    {{ info }}
+</p>
+{% endif %}
+{% endblock %}

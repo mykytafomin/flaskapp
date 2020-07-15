@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block content %}
+
+{% if tables|length > 0 %}
+<div class="table-bordered">    
+    <table class="table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Column names</th>
+                <th scope="col">Type</th>
+                <th scope="col">Unique</th>
+                <th scope="col">Null</th>
+                <th scope="col">MIN</th>
+                <th scope="col">AVG</th>
+                <th scope="col">MAX</th>
+                <th scope="col">Median</th>
+                <th scope="col">STD</th>
+                <th scope="col">Oldest date</th>
+                <th scope="col">Newest date</th>
+                <th scope="col">Histogram</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for key,value in tables.iterrows() %}
+                <tr>
+                    <td>{{value['name']}}</td>
+                    <td>{{value['type']}}</td>
+                    <td>{{value['unique']}}</td>
+                    <td>{{value['null']}}</td>
+                    <td>{{value['min']}}</td>
+                    <td>{{value['avg']}}</td>
+                    <td>{{value['max']}}</td>
+                    <td>{{value['median']}}</td>
+                    <td>{{value['std']}}</td>
+                    <td>{{value['oldest']}}</td>
+                    <td>{{value['newest']}}</td>
+                    <td>{{value['histogram']}}</td>               
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% else %}
+<h1>{{info}}</h1>
+{% endif %}
+{% endblock %}
